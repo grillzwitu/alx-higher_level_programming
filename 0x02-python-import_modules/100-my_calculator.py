@@ -1,7 +1,8 @@
 #!/usr/bin/python3
+from calculator_1 import add, sub, mul, div
+from sys import argv, exit
+
 if __name__ == "__main__":
-    from calculator_1 import add, sub, mul, div
-    from sys import argv, exit
 
     #Throw an error if arguements are not 3
     if len(argv) != 4:
