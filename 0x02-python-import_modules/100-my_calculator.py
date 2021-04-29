@@ -4,8 +4,8 @@ if __name__ == "__main__":
     from sys import argv
 
     #Throw an error if arguements are not 3
-    if len(argv) - 1 != 3:
-        print("Usage: {} <a> <operator> <b>".format(argv[0]))
+    if len(argv) != 4:
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         exit(1)
     #If argv[2](operator) is +
     if argv[2] == '+':
