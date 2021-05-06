@@ -9,12 +9,12 @@ def roman_to_int(roman_string):
         c = 0
         num = 0
         while c < l:
-            if c + 1 < l and roman_string[c:c + 2] in roman:
-                num += roman[roman_string[c:c + 2]]
+            if c + 1 < l and roman_string[c:c + 2] in romanNum:
+                num += romanNum[roman_string[c:c + 2]]
                 c += 2
             else:
-                num += roman[roman_string[c]]
+                num += romanNum[roman_string[c]]
                 c += 1
         return num
     else:
-        rteurn 0
+        return 0
