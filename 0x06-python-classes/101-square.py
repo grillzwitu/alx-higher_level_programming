@@ -22,18 +22,11 @@ class Square:
         self.__size = size
 
     def __repr__(self):
-        retstr = ""
         if self.__size == 0:
-            pass
-        else:
-            for i in range(self.__position[1]):
-                restr += '\n'
-            strchr = '#' * self.__size
-            spaces = ' ' * self.__position[0]
-            retstr += nargin + string
-            for i in range(1, self.__size):
-                output += '\n' + margin + string
-        return output
+            return ""
+        retstr =  "\n" * self.position[1] + (" " * self.position[0] +
+                                          "#" * self.size + "\n") * self.size
+        return retstr[:-1]
 
     def area(self):
         """Calculates the area of the square based on its size
