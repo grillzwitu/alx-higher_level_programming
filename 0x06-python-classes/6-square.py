@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-"""Defines the square class"""
+"""Defines a class named square"""
 
 
 class Square:
-    """Square class with a private instance attribute size"""
+    """A square class
+    Attributes:
+    size: The size of the square
+    position (int, int): The position of the square.
+    """
     def __init__(self, size=0, position=(0, 0)):
         """Initializes the Square class"""
         if type(size) is not int:
@@ -18,17 +22,20 @@ class Square:
         self.__size = size
 
     def area(self):
-        """Returns area of the square"""
+        """Calculates the area of the square based on its size
+        Returns:
+        The area (int).
+        """
         return self.__size * self.__size
 
     @property
     def size(self):
-        """Return size of the square"""
+        """Gets the current area/size of the square."""
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Sets the size of the square"""
+        """sets the size of the square based on the value passed"""
         if type(value) is not int:
             raise TypeError("size must be an integer")
         if value < 0:
@@ -37,12 +44,12 @@ class Square:
 
     @property
     def position(self):
-        """Return position of Square"""
+        """Gets the current position of the square."""
         return self.__position
 
     @position.setter
     def position(self, value):
-        """Sets the position of square"""
+        """Sets the position of square based on a value paremeter"""
         if type(value) is not tuple or len(value) != 2\
            or type(value[0]) is not int or type(value[1]) is not int\
            or value[0] < 0 or value[1] < 0:
@@ -51,13 +58,13 @@ class Square:
         self.__position = value
 
     def my_print(self):
-        """Prints the square"""
+        """Prints the square using # charcter and spaces"""
         if self.__size == 0:
             print()
         else:
-            for x in range(self.__position[1]):
+            for i in range(self.__position[1]):
                 print()
-            string = '#' * self.__size
-            margin = ' ' * self.__position[0]
-            for x in range(self.__size):
-                print(margin, string, sep="")
+            strchr = '#' * self.__size
+            spaces = ' ' * self.__position[0]
+            for i in range(self.__size):
+                print(spaces, strchr, sep="")
