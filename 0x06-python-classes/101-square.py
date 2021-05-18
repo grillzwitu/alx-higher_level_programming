@@ -24,8 +24,8 @@ class Square:
     def __repr__(self):
         if self.__size == 0:
             return ""
-        retstr =  "\n" * self.position[1] + (" " * self.position[0] +
-                                          "#" * self.size + "\n") * self.size
+        retstr = "\n" * self.position[1] + (" " * self.position[0] +
+                                            "#" * self.size + "\n") * self.size
         return retstr[:-1]
 
     def area(self):
