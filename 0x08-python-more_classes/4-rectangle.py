@@ -5,6 +5,9 @@
 
 
 class Rectangle:
+    """
+        Representation of a rectangle
+    """
     def __init__(self, width=0, height=0):
         '''
             Calling the setters to initialize the instance variables
