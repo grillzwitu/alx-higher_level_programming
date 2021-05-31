@@ -2,10 +2,6 @@
 The ``1-my_list`` module
 ========================
 
--------------------
-Using ``MyList``
--------------------
-
 Importing the function from the module:
 	  >>> MyList = __import__("1-my_list").MyList
 
@@ -36,23 +32,14 @@ Checking for empty list:
 	  []
 
 Check that appending works:
-	 >>> my_list.append(1)
-	 >>> my_list.append(1)
-	 >>> my_list.append(1)
-	 >>> my_list.append(1)
-	 >>> my_list.append(1)
-	 >>> my_list.append(1)
-	 >>> print(my_list)
-	 [1, 1, 1, 1, 1, 1]
-	 >>> my_list.print_sorted()
-	 [1, 1, 1, 1, 1, 1]
-
 	 >>> my = MyList()
 	 >>> my.append(183)
+	 >>> my.append(112)
+	 >>> my.append(1)
 	 >>> print (my)
-	 [183]
+	 [183, 112, 1]
 	 >>> my.print_sorted()
-	 [183]
+	 [1, 112, 183]
 
 Check for correct order in sorted list:
 	 >>> my_l = MyList()
@@ -69,16 +56,6 @@ Check for correct order in sorted list:
 	 [1, 4, 2, 3, 5]
 
 Checking for correct order in sorted list using negative numbers:
-	 >>> myl = MyList()
-	 >>> myl.append(4)
-	 >>> myl.append(-11)
-	 >>> print(myl)
-	 [4, -11]
-	 >>> myl.print_sorted()
-	 [-11, 4]
-	 >>> print(myl)
-	 [4, -11]
-
 	 >>> l = MyList()
 	 >>> l.append(-10)
 	 >>> l.append(-1)
