@@ -4,8 +4,9 @@
 """
 
 
-def add_attribute(cls, name, first):
+def add_attribute(obj, name, value):
     """Checks for and Adds Attribute"""
-    if not hasattr(cls, name):
+    if '__dict__' not in dir(obj):
         raise TypeError("can't add new attribute")
-    cls.name = first
+    else:
+        setattr(obj, name, value)
