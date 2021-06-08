@@ -66,13 +66,11 @@ class Base:
         """
             Returns an instance with all the attributes already set
         """
-        from models.rectangle import Rectangle
-        from models.square import Square
 
         if cls.__name__ == "Rectangle":
-            r2 = Rectangle(3, 8)
+            r2 = cls(1, 1)
         elif cls.__name__ == "Square":
-            r2 = Square(5)
+            r2 = cls(1)
         r2.update(**dictionary)
         return (r2)
 
@@ -83,20 +81,16 @@ class Base:
             and instance and from that creating instances
         """
         file_name = cls.__name__ + ".json"
+        content = []
 
         try:
             with open(file_name, encoding="UTF8") as fd:
                 content = cls.from_json_string(fd.read())
+            for i, e in enumerate(content):
+                content[i] = cls.create(**content[i])
         except:
-            return []
-
-        instances = []
-
-        for instance in content:
-            tmp = cls.create(**instance)
-            instances.append(tmp)
-
-        return instances
+            pass
+        return content
 
     @staticmethod
     def draw(list_rectangles, list_squares):
