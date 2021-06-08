@@ -149,35 +149,45 @@ class Base:
     @classmethod
     def save_to_file_csv(cls, list_objs):
         """
-            this is my method
+            Serializes a list of Rectangles or Squares in csv
         """
         file_name = cls.__name__ + ".csv"
 
-        with open(file_name, mode="w", newline='', encoding="UTF8") as fd:
-            write_this = csv.writer(fd, delimiter=" ")
+        with open(file_name, mode="w", newline='', encoding="UTF8") as csvf:
+            write_csv = csv.writer(csvf)
 
             if cls.__name__ == "Rectangle":
                 for item in list_objs:
-                    string = ""
-                    item = item.to_dictionary()
-                    string += (str(item["id"]) + "," +
-                               str(item["width"]) + "," +
-                               str(item["height"]) + "," +
-                               str(item["x"]) + "," + str(item["y"]))
-                    write_this.writerow(string)
+                    write_csv.writerow([item.id, item.width, item.height,
+                                        item.x, item.y])
 
             if cls.__name__ == "Square":
                 for item in list_objs:
-                    string = ""
-                    item = item.to_dictionary()
-                    string += (str(item["id"]) + "," +
-                               str(item["size"]) + "," +
-                               str(item["x"]) + "," + str(item["y"]))
-                    write_this.writerow(string)
+                    write_csv.writerow([item.id, item.size, item.x, item.y])
 
     @classmethod
     def load_from_file_csv(cls):
         """
-            this is my method
+            Deserializes a list of Rectangles or Squares in csv
         """
-        return ([])
+        file_name = cls.__name__ + ".csv"
+
+        li_st = []
+        try:
+            with open(filename, 'r') as csvf:
+                csv_reader = csv.reader(csvf)
+                for args in csv_reader:
+                    if cls.__name__ is "Rectangle":
+                        dictionary = {"id": int(args[0]),
+                                      "width": int(args[1]),
+                                      "height": int(args[2]),
+                                      "x": int(args[3]),
+                                      "y": int(args[4])}
+                    elif cls.__name__ is "Square":
+                        dictionary = {"id": int(args[0]), "size": int(args[1]),
+                                      "x": int(args[2]), "y": int(args[3])}
+                    obj = cls.create(**dictionary)
+                    li_st.append(obj)
+        except:
+            pass
+        return li_st
