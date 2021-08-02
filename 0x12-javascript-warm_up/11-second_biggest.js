@@ -1,14 +1,17 @@
 #!/usr/bin/node
 'use strict';
-let secMax = 0;
-const args = process.argv.slice(2);
-let newArr = [];
-if (args.length > 1) {
-  args.sort();
-  for (let arg = 0; arg < args.length; arg++) {
-    let numArg = Number(arg);
-    newArr.push(numArg);
+function second (myArray) {
+  if (myArray.length === 2 || myArray.length === 3) { return (0); }
+  let max = myArray[2];
+  let secondMax = myArray[3];
+  for (let i = 2; i < myArray.length; i++) {
+    if (myArray[i] > max) {
+      secondMax = max;
+      max = myArray[i];
+    } else if (myArray[i] > secondMax && myArray[i] < max) {
+      secondMax = myArray[i];
+    }
   }
-  secMax = newArr[newArr.length - 2];
+  return (secondMax);
 }
-console.log(secMax);
+console.log(second(process.argv));
