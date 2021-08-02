@@ -1,6 +1,6 @@
 #!/usr/bin/node
 'use strict';
-function second (myArray) {
+function secondMaxNo (myArray) {
   if (myArray.length === 2 || myArray.length === 3) { return (0); }
   let max = myArray[2];
   let secondMax = myArray[3];
@@ -14,4 +14,4 @@ function second (myArray) {
   }
   return (secondMax);
 }
-console.log(second(process.argv));
+console.log(secondMaxNo(process.argv));
