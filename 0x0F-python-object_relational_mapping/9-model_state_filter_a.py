@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-lists all State objects from the database hbtn_0e_6_usa
+lists all State objects that contain
+the letter a from the database hbtn_0e_6_usa
 """
 
 from model_state import Base, State
@@ -16,6 +17,8 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for state in session.query(State).order_by(State.id).all:
-        print("{}: {}".format(state.id, state.name))
+
+    states = session.query(State).filter(State.name.like('%a%')).all()
+    for state in states:
+        print('{}: {}'.format(state.id, state.name))
     session.close()

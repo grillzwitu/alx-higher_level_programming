@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-lists all State objects from the database hbtn_0e_6_usa
+lists the first State objects from the database hbtn_0e_6_usa
 """
 
 from model_state import Base, State
@@ -16,6 +16,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for state in session.query(State).order_by(State.id).all:
-        print("{}: {}".format(state.id, state.name))
+    firstState = session.query(State).order_by(State.id).first()
+    if firstState is not None:
+        print("{}: {}".format(firstState.id, firstState.name))
+    else:
+        print("Nothing")
     session.close()

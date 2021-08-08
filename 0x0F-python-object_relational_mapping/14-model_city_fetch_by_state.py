@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """
-lists all State objects from the database hbtn_0e_6_usa
+Prints all City objects from the database hbtn_0e_14_usa
 """
 
+from model_city import City
 from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -16,6 +17,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for state in session.query(State).order_by(State.id).all:
-        print("{}: {}".format(state.id, state.name))
+
+    result = session.query(City, State).filter(City.state_id == State.id)\
+                                       .order_by(City.id).all()
+    for city, state in result:
+        print("{}: ({}) {}".format(state.name, city.id, city.name))
     session.close()

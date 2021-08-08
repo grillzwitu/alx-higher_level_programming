@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
-lists all State objects from the database hbtn_0e_6_usa
+creates the State California with the City San Francisco from the database
 """
 
-from model_state import Base, State
+from relationship_state import Base, State
+from relationship_city import City
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import sys
@@ -16,6 +17,9 @@ if __name__ == "__main__":
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for state in session.query(State).order_by(State.id).all:
-        print("{}: {}".format(state.id, state.name))
+
+    addState = State(name="California")
+    addState.cities = [City(name="San Francisco")]
+    session.add(addState)
+    session.commit()
     session.close()
